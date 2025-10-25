@@ -1,0 +1,51 @@
+/* ===========================
+   Bear Ninja Hunter Styling
+   Author: Daniel Mulomba
+   =========================== */
+
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(180deg, #0b132b, #1c2541);
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+header {
+  background-color: #162447;
+  padding: 20px 0;
+  border-bottom: 3px solid #00aaff;
+}
+
+header h1 {
+  color: #00aaff;
+  font-size: 2rem;
+  margin: 0;
+}
+
+main {
+  padding: 40px 0;
+}
+
+p {
+  font-size: 1.2rem;
+  margin: 20px;
+}
+
+#game-result {
+  font-weight: bold;
+  font-size: 1.4rem;
+  color: #00ffcc;
+}
+
+footer {
+  background-color: #1f4068;
+  color: #ccc;
+  padding: 15px;
+  font-size: 0.9rem;
+  border-top: 2px solid #00aaff;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
