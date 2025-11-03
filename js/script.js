@@ -1,5 +1,4 @@
-// Bear Ninja Hunter Game - Phase 3
-// Author: Daniel Mulomba
+// BNH Phase 3
 // CA8
 
 // Declare and initialize all variables at the top
@@ -100,3 +99,4 @@ if (!playerName) {
   }
 
 }
+
