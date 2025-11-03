@@ -22,7 +22,7 @@ if (playerName !== null) {
 
 if (!playerName) {
   // playerName is null or empty after trimming
-  alert("You must enter your name to play. Reload the page to try again.");
+  alert("Invalid Entry Please Press F5 to play Again.");
 } else {
   alert("Hi " + playerName + "! Let's play!!");
 
@@ -42,7 +42,7 @@ if (!playerName) {
 
     // Validate input
     if (userChoice !== "bear" && userChoice !== "ninja" && userChoice !== "hunter") {
-      alert("Invalid input! Please type Bear, Ninja, or Hunter (not case-sensitive).");
+      alert("Invalid Entry Please Press F5 to play Again.");
       continue;
     }
 
@@ -98,4 +98,5 @@ if (!playerName) {
     }
     // else loop continues
   }
+
 }
