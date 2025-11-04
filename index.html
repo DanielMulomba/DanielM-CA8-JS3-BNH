@@ -1,13 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
- <!-- Required Meta Tags -->
-    <meta charset="utf-8">
-    <meta name="author" content="Daniel Muloba">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title><Daniel Mulomba>'s BNH Web Page.</title>
-    <meta name="robots" content="noindex, nofollow">
-  <link rel="stylesheet" href="css/style.css">
+  <meta charset="utf-8">
+  <meta name="author" content="Daniel Mulomba">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Daniel Mulomba's BNH Web Page</title>
+
+  <!-- CSS intégré -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(180deg, #0b132b, #1c2541);
+      color: #fff;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    header {
+      background-color: #162447;
+      padding: 20px 0;
+      border-bottom: 3px solid #00aaff;
+    }
+
+    header h1 {
+      color: #00aaff;
+      font-size: 2rem;
+      margin: 0;
+    }
+
+    main {
+      padding: 40px 0;
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin: 20px;
+    }
+
+    #game-result {
+      font-weight: bold;
+      font-size: 1.4rem;
+      color: #00ffcc;
+    }
+
+    footer {
+      background-color: #1f4068;
+      color: #ccc;
+      padding: 15px;
+      font-size: 0.9rem;
+      border-top: 2px solid #00aaff;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
 </head>
 
 <body>
@@ -25,8 +72,94 @@
     <p>This game was created by Daniel Mulomba for academic purposes only.</p>
   </footer>
 
-  <!-- Link JS -->
-  <script src="js/script.js"></script>
-</body>
+  <!-- JavaScript intégré -->
+  <script>
+    // Declare and initialize all variables
+    let playerName = "";
+    let userChoice = "";
+    let computerChoice = "";
+    let winnerMessage = "";
+    let playAgain = true;
 
+    // Store game options
+    const choices = ["Bear", "Ninja", "Hunter"];
+
+    // Ask for player name
+    playerName = prompt("Welcome to Bear Ninja Hunter! Please enter your name to get started:");
+    if (playerName !== null) {
+      playerName = playerName.trim();
+    }
+
+    if (!playerName) {
+      alert("Invalid Entry. Please press F5 to play again.");
+    } else {
+      alert("Hi " + playerName + "! Let's play!!");
+
+      // Main gameplay loop
+      while (playAgain) {
+        userChoice = prompt(`${playerName}, who are you: Bear, Ninja, or Hunter?`);
+
+        if (userChoice === null) {
+          alert("Game cancelled. Thanks for playing!");
+          break;
+        }
+
+        userChoice = userChoice.trim();
+
+        // Allow any case input and normalize it
+        const lower = userChoice.toLowerCase();
+        if (lower === "bear") userChoice = "Bear";
+        else if (lower === "ninja") userChoice = "Ninja";
+        else if (lower === "hunter") userChoice = "Hunter";
+        else {
+          alert("Invalid Entry. Please press F5 to play again.");
+          continue;
+        }
+
+        // Random computer choice
+        const randomIndex = Math.floor(Math.random() * choices.length);
+        computerChoice = choices[randomIndex];
+
+        // Determine winner
+        if (userChoice === computerChoice) {
+          winnerMessage = "It's a tie!";
+        } else if (
+          (userChoice === "Bear" && computerChoice === "Ninja") ||
+          (userChoice === "Ninja" && computerChoice === "Hunter") ||
+          (userChoice === "Hunter" && computerChoice === "Bear")
+        ) {
+          winnerMessage = "You win!!";
+        } else {
+          winnerMessage = "Computer wins!!";
+        }
+
+        // Display results
+        alert(
+          playerName + ", you picked " + userChoice +
+          ".\nComputer picked " + computerChoice +
+          ".\n" + winnerMessage
+        );
+
+        // Output to HTML
+        document.getElementById("welcome").textContent = "Welcome " + playerName + "!";
+        document.getElementById("user-choice").textContent =
+          playerName + " chose " + userChoice + ". The computer chose " + computerChoice + ".";
+        document.getElementById("game-result").textContent = winnerMessage;
+
+        // Ask to play again
+        const responseRaw = prompt(playerName + ", would you like to play again? Yes or No?");
+        if (responseRaw === null) {
+          playAgain = false;
+          alert("Thanks for playing, " + playerName + "! Goodbye!");
+          break;
+        }
+        const response = responseRaw.trim().toLowerCase();
+        if (response !== "yes") {
+          playAgain = false;
+          alert("Thanks for playing, " + playerName + "! Goodbye!");
+        }
+      }
+    }
+  </script>
+</body>
 </html>
